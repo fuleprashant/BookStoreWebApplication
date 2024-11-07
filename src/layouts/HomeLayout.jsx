@@ -5,7 +5,7 @@ import Home from "../components/Home";
 
 const HomeLayout = () => {
   return (
-    <div>
+    <div className="dark:bg-slate-600 dark:text-white bg-white">
       <Navbar />
       <div>
         <Home />
