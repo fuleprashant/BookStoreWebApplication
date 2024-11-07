@@ -1,11 +1,15 @@
 import React from "react";
 import Navbar from "./components/Navbar";
 import "./App.css";
+import Banner from "./components/Banner";
+import Footer from "./components/Footer";
 
 const App = () => {
   return (
-    <div className="app-container">
+    <div>
       <Navbar />
+      <Banner />
+      <Footer />
     </div>
   );
 };

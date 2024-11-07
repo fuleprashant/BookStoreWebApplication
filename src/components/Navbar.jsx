@@ -25,6 +25,7 @@ const Navbar = () => {
           </button>
         </div>
         <div className="mx-[60px] md:mx-[100px] w-full flex items-center justify-between ">
+          {/* when text comein two line instead of one line we use below class = whiteapce-nowrap */}
           <div className="text-xl font-bold  text-center  whitespace-nowrap ">
             Swarajya BookStore
           </div>
