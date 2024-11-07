@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BiSearch } from "react-icons/bi";
 import { CiLight } from "react-icons/ci";
 import { FaBars, FaTimes } from "react-icons/fa";
@@ -7,6 +7,22 @@ import { MdDarkMode } from "react-icons/md";
 const Navbar = () => {
   const [themeMode, setThemeMode] = useState(false);
   const [mobilePopup, setMobilePopup] = useState(false);
+  const [sticky, setSticky] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setSticky(true);
+      } else {
+        setSticky(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const toggleTheme = () => {
     setThemeMode(!themeMode);
@@ -18,7 +34,16 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className=" h-16 bg-slate-200 flex items-center ">
+      {/* <div
+      className={`${
+        sticky ? "bg-slate-200 shadow-md fixed" : "bg-slate-200"
+      }  top-0 w-full z-10 transition-all duration-300`}
+    ></div> */}
+      <div
+        className={`h-16 bg-slate-200 flex items-center ${
+          sticky ? "fixed w-full " : ""
+        }`}
+      >
         <div className="md:hidden flex items-center ml-3">
           <button onClick={toggleMobileView}>
             {mobilePopup ? <FaTimes size={24} /> : <FaBars size={24} />}
