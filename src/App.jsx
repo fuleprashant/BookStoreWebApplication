@@ -1,17 +1,26 @@
 import React from "react";
 import Navbar from "./components/Navbar";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
-import Banner from "./components/Banner";
-import Footer from "./components/Footer";
-import Freebook from "./components/Freebook";
+
+import Courses from "./components/courses";
+import HomeLayout from "./layouts/HomeLayout";
+import CoursesLayout from "./layouts/CoursesLayout";
 
 const App = () => {
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <HomeLayout />,
+    },
+    {
+      path: "/courses",
+      element: <CoursesLayout />,
+    },
+  ]);
   return (
     <div>
-      <Navbar />
-      <Banner />
-      <Freebook />
-      <Footer />
+      <RouterProvider router={router} />
     </div>
   );
 };
