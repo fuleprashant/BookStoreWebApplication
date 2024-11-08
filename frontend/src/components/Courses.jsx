@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import allData from "../../public/list.json";
 import Card from "./Card";
+import axios from "axios";
 
 const Courses = () => {
+  const [data, setData] = useState([]);
+  console.log("th data in the state is", data);
+  const fetchData = async () => {
+    const response = await axios.get(" http://localhost:9865/book/");
+    setData(response.data);
+    console.log(response.data);
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <div>
       <div className="mx-[30px] md:mx-[100px] pt-16 z-10">
@@ -11,7 +23,7 @@ const Courses = () => {
         <h1 className="text-3xl font-semibold text-center mb-8">Our Courses</h1>
         {/* Wrapper div for grid layout */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 ">
-          {allData.map((item) => {
+          {data.map((item) => {
             return (
               <Card
                 item={item}
