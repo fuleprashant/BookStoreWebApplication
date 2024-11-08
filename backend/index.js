@@ -6,8 +6,6 @@ import { getBook } from "./controllers/book.controllers.js";
 import { signUp } from "./controllers/user.controllers.js";
 
 const app = express();
-app.use(cors());
-app.use(express.json());
 dotenv.config();
 // console.log(app);
 
