@@ -3,11 +3,13 @@ import { BiSearch } from "react-icons/bi";
 import { CiLight } from "react-icons/ci";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { MdDarkMode } from "react-icons/md";
-import { NavLink } from "react-router-dom";
+import { NavLink , useNavigate} from "react-router-dom";
+
 
 const Navbar = () => {
   const [themeMode, setThemeMode] = useState(false);
   const [mobilePopup, setMobilePopup] = useState(false);
+  const navigate = useNavigate();
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
   );
@@ -97,16 +99,16 @@ const Navbar = () => {
             >
               <ul>
                 <li>
-                  <a className="block text-center py-3">Home</a>
+                  <NavLink className="block text-center py-3">Home</NavLink>
                 </li>
                 <li>
                   <NavLink className="block text-center py-3">Courses</NavLink>
                 </li>
                 <li>
-                  <a className="block text-center py-3">Contact</a>
+                  <NavLink className="block text-center py-3">Contact</NavLink>
                 </li>
                 <li>
-                  <a className="block text-center py-3">About</a>
+                  <NavLink className="block text-center py-3">About</NavLink>
                 </li>
               </ul>
             </div>
@@ -127,7 +129,7 @@ const Navbar = () => {
                 className="cursor-pointer text-gray-800 dark:text-white"
               >
                 {themeMode ? (
-                  <CiLight
+                  <MdDarkMode
                     size={24}
                     onClick={() =>
                       setTheme(theme === "light" ? "dark" : "light")
@@ -135,7 +137,7 @@ const Navbar = () => {
                     className="text-black"
                   />
                 ) : (
-                  <MdDarkMode
+                  <CiLight
                     size={24}
                     onClick={() =>
                       setTheme(theme === "dark" ? "light" : "dark")
@@ -145,7 +147,7 @@ const Navbar = () => {
                 )}
               </div>
             </div>
-            <button className="px-3 py-2 bg-black text-white font-semibold rounded-md shadow-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-black transition duration-300">
+            <button className="px-3 py-2 bg-black text-white font-semibold rounded-md shadow-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-black transition duration-300" onClick={() => navigate("/login")}>
               Login
             </button>
           </div>

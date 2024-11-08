@@ -4,7 +4,7 @@ const Card = ({ item }) => {
   console.log("the item", item);
   return (
     <div>
-      <div class="relative mx-[20px] md:mx-[100px] flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg  w-80 md:w-96 ">
+      <div class=" relative mx-[20px] md:mx-[100px] flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg  w-80 md:w-96 ">
         <div class="relative h-56 m-2.5 overflow-hidden text-white rounded-md">
           <img src={item?.image} alt="card-image" />
         </div>

@@ -46,7 +46,7 @@ const Freebook = () => {
   return (
     <>
       <div>
-        <div className="mx-[60px] md:mx-[100px]">
+        <div className="mx-[60px] md:mx-[100px] ">
           <h1 className="font-semibold text-xl pb-2 mt-3">
             Free Offered Courses
           </h1>
@@ -59,7 +59,7 @@ const Freebook = () => {
           </p>
         </div>
       </div>
-      <div>
+      <div className="mx-[60px] md:mx-[100px]">
         <Slider {...settings}>
           {filterData.map((item) => (
             <Card item={item} key={item.id} />
