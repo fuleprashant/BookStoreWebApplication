@@ -1,6 +1,10 @@
 import React from "react";
 import Navbar from "./components/Navbar";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
 import "./App.css";
 
 import Courses from "./components/courses";
@@ -8,8 +12,12 @@ import HomeLayout from "./layouts/HomeLayout";
 import CoursesLayout from "./layouts/CoursesLayout";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
+import { useAuth } from "./context/AuthProvider";
+import ProtectedRoute from "./routes/ProtectedRoutes";
 
 const App = () => {
+  const [authUser, setAuthUser] = useAuth();
+  console.log("the auth user is", authUser);
   const router = createBrowserRouter([
     {
       path: "/",
@@ -17,7 +25,11 @@ const App = () => {
     },
     {
       path: "/courses",
-      element: <CoursesLayout />,
+      element: (
+        <ProtectedRoute>
+          <CoursesLayout />
+        </ProtectedRoute>
+      ),
     },
     {
       path: "/login",
