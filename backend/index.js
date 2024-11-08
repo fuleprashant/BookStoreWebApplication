@@ -2,10 +2,13 @@ import express from "express";
 import dotenv from "dotenv";
 import db from "./database/db.js";
 import cors from "cors";
-import { getBook } from "./controllers/book.controllers.js";
-import { signUp } from "./controllers/user.controllers.js";
-
+import userRouter from "./routes/user.route.js"; // Import your user router
+import bookRouter from "./routes/book.route.js";
 const app = express();
+app.use(cors());
+
+app.use(express.json());
+
 dotenv.config();
 // console.log(app);
 
@@ -15,8 +18,8 @@ db();
 // app.get("/", (req, res) => {
 //   res.send("the server has been start o");
 // });
-app.use("/book", getBook);
-app.use("/user", signUp);
+app.use("/book", bookRouter);
+app.use("/user", userRouter);
 app.listen(port, () => {
   console.log(`the server run on the port number http://localhost:${port}`);
 });
