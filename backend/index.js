@@ -1,9 +1,11 @@
 import express from "express";
 import dotenv from "dotenv";
 import db from "./database/db.js";
+import cors from "cors";
 import { getBook } from "./controllers/book.controllers.js";
 
 const app = express();
+app.use(cors());
 dotenv.config();
 // console.log(app);
 
