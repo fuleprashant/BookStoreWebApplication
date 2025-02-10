@@ -5,11 +5,9 @@ import axios from "axios";
 
 const Courses = () => {
   const [data, setData] = useState([]);
-  console.log("th data in the state is", data);
   const fetchData = async () => {
     const response = await axios.get(" http://localhost:9865/book/");
     setData(response.data);
-    console.log(response.data);
   };
   useEffect(() => {
     fetchData();

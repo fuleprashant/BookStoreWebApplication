@@ -7,7 +7,6 @@ import Card from "./Card";
 
 const Freebook = () => {
   const filterData = list.filter((data) => data.category === "Free");
-  console.log(filterData);
 
   var settings = {
     dots: true,

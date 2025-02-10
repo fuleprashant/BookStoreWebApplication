@@ -3,8 +3,7 @@ import { BiSearch } from "react-icons/bi";
 import { CiLight } from "react-icons/ci";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { MdDarkMode } from "react-icons/md";
-import { NavLink , useNavigate} from "react-router-dom";
-
+import { NavLink, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [themeMode, setThemeMode] = useState(false);
@@ -14,11 +13,12 @@ const Navbar = () => {
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
   );
   const element = document.documentElement;
+  const users = localStorage.getItem("Users");
 
   useEffect(() => {
     if (theme === "dark") {
-      element.classList.add("dark");
-      document.body.classList.add("dark");
+      element.classList.add("dark"); // add the class into the html
+      document.body.classList.add("dark"); // add the class into the body
       localStorage.setItem("theme", "dark");
     } else {
       element.classList.remove("dark");
@@ -54,11 +54,6 @@ const Navbar = () => {
 
   return (
     <div>
-      {/* <div
-      className={`${
-        sticky ? "bg-slate-200 shadow-md fixed" : "bg-slate-200"
-      }  top-0 w-full z-10 transition-all duration-300`}
-    ></div> */}
       <div
         className={`h-16 bg-slate-200 flex items-center ${
           sticky ? "fixed w-full z-10 top-0 shadow-md " : ""
@@ -147,8 +142,11 @@ const Navbar = () => {
                 )}
               </div>
             </div>
-            <button className="px-3 py-2 bg-black text-white font-semibold rounded-md shadow-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-black transition duration-300" onClick={() => navigate("/login")}>
-              Login
+            <button
+              className="px-3 py-2 bg-black text-white font-semibold rounded-md shadow-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-black transition duration-300"
+              onClick={() => navigate("/login")}
+            >
+              {users ? "Logout" : "Login"}
             </button>
           </div>
         </div>
